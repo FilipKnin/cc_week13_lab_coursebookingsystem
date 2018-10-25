@@ -13,15 +13,17 @@ public class Booking {
     @Column(name = "date")
     private String date;
 
-//    Customer customer;
+    @ManyToOne
+    @JoinColumn(name = "customer_id", nullable = false)
+    Customer customer;
 
     @ManyToOne
     @JoinColumn(name = "course_id", nullable = false)
     Course course;
 
-    public Booking(String date/*Customer customer*/, Course course) {
+    public Booking(String date, Customer customer, Course course) {
         this.date = date;
-//        this.customer = customer;
+        this.customer = customer;
         this.course = course;
     }
 
@@ -44,13 +46,13 @@ public class Booking {
         this.date = date;
     }
 
-//    public Customer getCustomer() {
-//        return customer;
-//    }
-//
-//    public void setCustomer(Customer customer) {
-//        this.customer = customer;
-//    }
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 
     public Course getCourse() {
         return course;
