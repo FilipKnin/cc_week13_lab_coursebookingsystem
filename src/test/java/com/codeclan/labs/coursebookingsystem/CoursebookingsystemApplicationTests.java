@@ -30,4 +30,14 @@ public class CoursebookingsystemApplicationTests {
 		courseRepository.save(course);
 	}
 
+	@Test
+	public void canAddBooking() {
+		Course course = new Course("Course1", "Edinburgh", 5);
+		courseRepository.save(course);
+
+		Booking booking1 = new Booking("12-10-2018", course);
+		bookingRepository.save(booking1);
+
+	}
+
 }
