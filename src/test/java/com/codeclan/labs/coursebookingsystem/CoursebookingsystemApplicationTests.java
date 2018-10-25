@@ -2,8 +2,10 @@ package com.codeclan.labs.coursebookingsystem;
 
 import com.codeclan.labs.coursebookingsystem.models.Booking;
 import com.codeclan.labs.coursebookingsystem.models.Course;
+import com.codeclan.labs.coursebookingsystem.models.Customer;
 import com.codeclan.labs.coursebookingsystem.repositories.BookingRepository;
 import com.codeclan.labs.coursebookingsystem.repositories.CourseRepository;
+import com.codeclan.labs.coursebookingsystem.repositories.CustomerRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,9 @@ public class CoursebookingsystemApplicationTests {
 	@Autowired
 	BookingRepository bookingRepository;
 
+	@Autowired
+	CustomerRepository customerRepository;
+
 	@Test
 	public void contextLoads() {
 	}
@@ -35,7 +40,10 @@ public class CoursebookingsystemApplicationTests {
 		Course course = new Course("Course1", "Edinburgh", 5);
 		courseRepository.save(course);
 
-		Booking booking1 = new Booking("12-10-2018", course);
+		Customer customer1 = new Customer("customer1name", "Glasgow", 20);
+		customerRepository.save(customer1);
+
+		Booking booking1 = new Booking("12-10-2018",customer1, course );
 		bookingRepository.save(booking1);
 
 	}
